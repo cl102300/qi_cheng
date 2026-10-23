@@ -1,0 +1,17 @@
+services:
+  heart-memories:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      HOST: 0.0.0.0
+      PORT: 3000
+      DATABASE_PATH: /data/heart-memories.sqlite
+      NODE_ENV: production
+      COOKIE_SECURE: "true"
+    volumes:
+      - heart_memories_data:/data
+
+volumes:
+  heart_memories_data:
